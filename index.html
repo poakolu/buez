@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur de Budget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Simulateur de Budget Mensuel</h1>
+
+  <section id="profile">
+    <label>Profil :
+      <select id="profileSelect">
+        <option>Étudiant</option>
+        <option>Famille</option>
+        <option>Freelance</option>
+        <option>Employé</option>
+        <option>Autre</option>
+      </select>
+    </label>
+  </section>
+
+  <section id="inputs">
+    <h2>Revenus</h2>
+    <input type="number" id="income" placeholder="Revenu mensuel (€)">
+
+    <h2>Dépenses</h2>
+    <div class="expense-group">
+      <label>Logement <input type="number" class="expense" data-label="Logement"></label>
+      <label>Alimentation <input type="number" class="expense" data-label="Alimentation"></label>
+      <label>Transport <input type="number" class="expense" data-label="Transport"></label>
+      <label>Loisirs <input type="number" class="expense" data-label="Loisirs"></label>
+      <label>Autres <input type="number" class="expense" data-label="Autres"></label>
+    </div>
+
+    <button onclick="calculer()">Calculer</button>
+  </section>
+
+  <section id="results">
+    <h2>Résultats</h2>
+    <p id="savingsRate"></p>
+    <canvas id="budgetChart" width="400" height="400"></canvas>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
