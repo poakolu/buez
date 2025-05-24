@@ -34,7 +34,7 @@
 
 <div align="center">
 
-![Capture d'écran du simulateur](https://user-images.githubusercontent.com/tonpseudo/simulateur-budget/demo-screenshot.png)
+[![Capture-d-cran-2025-05-24-125828.png](https://i.postimg.cc/j5rH490H/Capture-d-cran-2025-05-24-125828.png)](https://postimg.cc/bG3Szmvr)
 
 </div>
 
