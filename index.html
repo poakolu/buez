@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulateur de Budget</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulateur de dépenses mensuelles</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Simulateur de Budget Mensuel</h1>
+  <h1>Simulateur de dépenses mensuelles</h1>
 
-  <section id="profile">
-    <label>Profil :
-      <select id="profileSelect">
-        <option>Étudiant</option>
-        <option>Famille</option>
-        <option>Freelance</option>
-        <option>Employé</option>
-        <option>Autre</option>
-      </select>
+  <div>
+    <label>
+      <input type="radio" name="period" value="mois" checked /> Mensuel
     </label>
-  </section>
+    <label>
+      <input type="radio" name="period" value="annee" /> Annuel
+    </label>
+  </div>
 
-  <section id="inputs">
-    <h2>Revenus</h2>
-    <input type="number" id="income" placeholder="Revenu mensuel (€)">
-
-    <h2>Dépenses</h2>
-    <div class="expense-group">
-      <label>Logement <input type="number" class="expense" data-label="Logement"></label>
-      <label>Alimentation <input type="number" class="expense" data-label="Alimentation"></label>
-      <label>Transport <input type="number" class="expense" data-label="Transport"></label>
-      <label>Loisirs <input type="number" class="expense" data-label="Loisirs"></label>
-      <label>Autres <input type="number" class="expense" data-label="Autres"></label>
+  <form id="budgetForm">
+    <div>
+      <label>Revenu total (€) : <input type="number" id="income" min="0" step="0.01" required /></label>
     </div>
 
-    <button onclick="calculer()">Calculer</button>
+    <fieldset>
+      <legend>Dépenses (€)</legend>
+      <label>Logement: <input type="number" name="logement" min="0" step="0.01" value="0" /></label>
+      <label>Alimentation: <input type="number" name="alimentation" min="0" step="0.01" value="0" /></label>
+      <label>Transport: <input type="number" name="transport" min="0" step="0.01" value="0" /></label>
+      <label>Loisirs: <input type="number" name="loisirs" min="0" step="0.01" value="0" /></label>
+      <label>Autres: <input type="number" name="autres" min="0" step="0.01" value="0" /></label>
+    </fieldset>
+
+    <button type="submit">Calculer</button>
+  </form>
+
+  <section id="results" style="display:none;">
+    <h2>Résultats</h2>
+    <p id="totalDepenses"></p>
+    <p id="epargne"></p>
+    <canvas id="chart" width="400" height="400"></canvas>
   </section>
 
-  <section id="results">
-    <h2>Résultats</h2>
-    <p id="savingsRate"></p>
-    <canvas id="budgetChart" width="400" height="400"></canvas>
+  <section id="history" style="display:none;">
+    <h2>Historique sur 12 mois</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Mois</th>
+          <th>Revenu (€)</th>
+          <th>Dépenses (€)</th>
+          <th>Épargne (€)</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody"></tbody>
+    </table>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
